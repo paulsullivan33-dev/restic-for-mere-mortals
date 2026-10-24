@@ -1,0 +1,33 @@
+$ restic restore latest --target /home/hatch/workspace/restic-lab/restore
+restoring snapshot 997db8dc of [/home/hatch/workspace/restic-lab/data/field-notes] at 2026-10-24 04:07:58.861326255 +0000 UTC by root@htch-runtime to /home/hatch/workspace/restic-lab/restore
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes/documents/garden-diary.txt: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes/documents/garden-diary.txt: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes/documents/shed-key.txt: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes/documents/shed-key.txt: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes/documents/shopping-list.txt: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes/documents/shopping-list.txt: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes/documents: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes/documents: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes/exports/bed-plan.csv: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes/exports/bed-plan.csv: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes/exports: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes/exports: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-01-copy.bin: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-01-copy.bin: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-01.bin: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-01.bin: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-02.bin: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-02.bin: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes/photos: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes/photos: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data/field-notes: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab/data: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data: operation not permitted
+ignoring error for /home/hatch/workspace/restic-lab: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab: operation not permitted
+ignoring error for /home/hatch/workspace: lchown /home/hatch/workspace/restic-lab/restore/home/hatch/workspace: operation not permitted
+ignoring error for /home/hatch: lchown /home/hatch/workspace/restic-lab/restore/home/hatch: operation not permitted
+Summary: Restored 8 / 16 files/dirs (20.000 MiB / 20.000 MiB) in 0:00
+Fatal: There were 15 errors
+
+[exit 1]
+$ diff -r /home/hatch/workspace/restic-lab/data/field-notes /home/hatch/workspace/restic-lab/restore/home/hatch/workspace/restic-lab/data/field-notes
+[exit 0]
+3259b450703fcd7517907ef959b25eb1dfbfe419e034ccc724230c72f17f7bbf  photos/orchard-01.bin
+3259b450703fcd7517907ef959b25eb1dfbfe419e034ccc724230c72f17f7bbf  photos/orchard-01-copy.bin
+90bf059b12a2d3ad9ec2ed6d638910f1f26c123c79f94e66c59b5aa4c28f2608  photos/orchard-02.bin
+b69bdf2cd141eed54875f24d485fa6ff3fcf5a76a0f5ec2b5c1da58a135dc114  documents/garden-diary.txt
+2e5ebb55f2f4710eae7f60f307e1eedb7f8cfc0f84a3922c2a4764e07919d8f3  documents/shopping-list.txt
+3259b450703fcd7517907ef959b25eb1dfbfe419e034ccc724230c72f17f7bbf  photos/orchard-01.bin
+90bf059b12a2d3ad9ec2ed6d638910f1f26c123c79f94e66c59b5aa4c28f2608  photos/orchard-02.bin
+9f4827a98050a5413af1aa27b450c19231ec00123d32f15e04d17049c45eb065  documents/garden-diary.txt
+2e5ebb55f2f4710eae7f60f307e1eedb7f8cfc0f84a3922c2a4764e07919d8f3  documents/shopping-list.txt
+# t05-restore.txt checksums above: restored files first, then the pre-backup originals for the files that existed then; orchard-01-copy.bin was created after checksums-before.txt and must match orchard-01.bin

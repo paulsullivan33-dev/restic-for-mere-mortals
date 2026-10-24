@@ -1,0 +1,43 @@
+$ du -sb /home/hatch/workspace/restic-lab/repo
+12590776	/home/hatch/workspace/restic-lab/repo
+[exit 0]
+# t03-backup-second-dedup.txt changes since snapshot 1: copied orchard-01.bin to orchard-01-copy.bin (same 8 MiB content), appended 2 lines to garden-diary.txt, added shed-key.txt (small)
+$ restic backup /home/hatch/workspace/restic-lab/data/field-notes
+using parent snapshot c81c812b
+
+Files:           2 new,     1 changed,     4 unmodified
+Dirs:            0 new,     8 changed,     1 unmodified
+Added to the repository: 7.089 KiB (3.816 KiB stored)
+
+processed 7 files, 20.000 MiB in 0:02
+snapshot 997db8dc saved
+[exit 0]
+$ du -sb /home/hatch/workspace/restic-lab/repo
+12595923	/home/hatch/workspace/restic-lab/repo
+[exit 0]
+$ restic snapshots
+ID        Time                 Host          Tags        Paths                                              Size
+----------------------------------------------------------------------------------------------------------------------
+c81c812b  2026-10-24 04:07:52  htch-runtime              /home/hatch/workspace/restic-lab/data/field-notes  12.000 MiB
+997db8dc  2026-10-24 04:07:58  htch-runtime              /home/hatch/workspace/restic-lab/data/field-notes  20.000 MiB
+----------------------------------------------------------------------------------------------------------------------
+2 snapshots
+[exit 0]
+$ restic stats
+scanning...
+Stats in restore-size mode:
+     Snapshots processed:  2
+        Total File Count:  30
+              Total Size:  32.001 MiB
+[exit 0]
+$ restic stats --mode raw-data latest
+scanning...
+Stats in raw-data mode:
+     Snapshots processed:  1
+        Total Blob Count:  24
+ Total Uncompressed Size:  12.008 MiB
+              Total Size:  12.004 MiB
+    Compression Progress:  100.00%
+       Compression Ratio:  1.00x
+Compression Space Saving:  0.03%
+[exit 0]

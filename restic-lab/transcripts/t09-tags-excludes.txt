@@ -1,0 +1,20 @@
+$ restic backup --tag fieldnotes --tag weekly --exclude-file excludes.txt data/field-notes   (paths abbreviated)
+using parent snapshot 997db8dc
+
+Files:           7 new,     0 changed,     0 unmodified
+Dirs:            5 new,     0 changed,     0 unmodified
+Added to the repository: 719 B (597 B stored)
+
+processed 7 files, 20.000 MiB in 0:00
+snapshot ca09b900 saved
+[exit 0]
+$ restic snapshots
+ID        Time                 Host          Tags               Paths                                              Size
+-----------------------------------------------------------------------------------------------------------------------------
+997db8dc  2026-10-24 04:07:58  htch-runtime                     /home/hatch/workspace/restic-lab/data/field-notes  20.000 MiB
+ca09b900  2026-10-24 04:09:01  htch-runtime  fieldnotes,weekly  /home/hatch/workspace/restic-lab/data/field-notes  20.000 MiB
+-----------------------------------------------------------------------------------------------------------------------------
+2 snapshots
+[exit 0]
+$ restic ls latest | grep -c temp.tmp
+0

@@ -1,0 +1,26 @@
+# t01-init.txt RESTIC_REPOSITORY=/home/hatch/workspace/restic-lab/repo ; RESTIC_PASSWORD set in environment (value not shown)
+$ restic init
+created restic repository 9e6366d8c6 at /home/hatch/workspace/restic-lab/repo
+
+Please note that knowledge of your password is required to access
+the repository. Losing your password means that your data is
+irrecoverably lost.
+[exit 0]
+$ ls -la /home/hatch/workspace/restic-lab/repo
+total 28
+drwxrws--- 1 root nogroup   66 Oct 24 04:07 .
+drwxrws--- 1 root nogroup   56 Oct 24 04:07 ..
+-r-------- 1 root nogroup  155 Oct 24 04:07 config
+drwx--S--- 1 root nogroup 1024 Oct 24 04:07 data
+drwx--S--- 1 root nogroup    0 Oct 24 04:07 index
+drwx--S--- 1 root nogroup  128 Oct 24 04:07 keys
+drwx--S--- 1 root nogroup    0 Oct 24 04:07 locks
+drwx--S--- 1 root nogroup    0 Oct 24 04:07 snapshots
+[exit 0]
+$ restic cat config
+{
+  "version": 2,
+  "id": "9e6366d8c68b24fef28cd637540f5e8e0f1132c6208830ea6e3d4f3dab6d2483",
+  "chunker_polynomial": "342a214d432901"
+}
+[exit 0]

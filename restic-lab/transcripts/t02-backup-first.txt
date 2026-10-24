@@ -1,0 +1,30 @@
+$ du -sh /home/hatch/workspace/restic-lab/data/field-notes
+13M	/home/hatch/workspace/restic-lab/data/field-notes
+[exit 0]
+$ find /home/hatch/workspace/restic-lab/data/field-notes -type f -exec ls -l {} +
+-rw-rw---- 1 root nogroup     172 Oct 24 04:07 /home/hatch/workspace/restic-lab/data/field-notes/documents/garden-diary.txt
+-rw-rw---- 1 root nogroup      54 Oct 24 04:07 /home/hatch/workspace/restic-lab/data/field-notes/documents/shopping-list.txt
+-rw-rw---- 1 root nogroup      69 Oct 24 04:07 /home/hatch/workspace/restic-lab/data/field-notes/exports/bed-plan.csv
+-rw-rw---- 1 root nogroup 8388608 Oct 24 04:07 /home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-01.bin
+-rw-rw---- 1 root nogroup 4194304 Oct 24 04:07 /home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-02.bin
+[exit 0]
+$ restic backup /home/hatch/workspace/restic-lab/data/field-notes
+no parent snapshot found, will read all files
+
+Files:           5 new,     0 changed,     0 unmodified
+Dirs:            9 new,     0 changed,     0 unmodified
+Added to the repository: 12.006 MiB (12.005 MiB stored)
+
+processed 5 files, 12.000 MiB in 0:03
+snapshot c81c812b saved
+[exit 0]
+$ du -sb /home/hatch/workspace/restic-lab/repo
+12590776	/home/hatch/workspace/restic-lab/repo
+[exit 0]
+$ restic snapshots
+ID        Time                 Host          Tags        Paths                                              Size
+----------------------------------------------------------------------------------------------------------------------
+c81c812b  2026-10-24 04:07:52  htch-runtime              /home/hatch/workspace/restic-lab/data/field-notes  12.000 MiB
+----------------------------------------------------------------------------------------------------------------------
+1 snapshots
+[exit 0]

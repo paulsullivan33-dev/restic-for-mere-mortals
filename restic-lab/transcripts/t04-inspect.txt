@@ -1,0 +1,39 @@
+snapshots: first=c81c812b9ea6e67346d159e70f199048222b395e05f8dacc8e22c377e31dfb7a second=997db8dc16b46ac61f384adccc9de624e6f6c1b7dd5c61bd487d502e64dfb1d2
+$ restic ls latest
+snapshot 997db8dc of [/home/hatch/workspace/restic-lab/data/field-notes] at 2026-10-24 04:07:58.861326255 +0000 UTC by root@htch-runtime filtered by []:
+/home
+/home/hatch
+/home/hatch/workspace
+/home/hatch/workspace/restic-lab
+/home/hatch/workspace/restic-lab/data
+/home/hatch/workspace/restic-lab/data/field-notes
+/home/hatch/workspace/restic-lab/data/field-notes/documents
+/home/hatch/workspace/restic-lab/data/field-notes/documents/garden-diary.txt
+/home/hatch/workspace/restic-lab/data/field-notes/documents/shed-key.txt
+/home/hatch/workspace/restic-lab/data/field-notes/documents/shopping-list.txt
+/home/hatch/workspace/restic-lab/data/field-notes/exports
+/home/hatch/workspace/restic-lab/data/field-notes/exports/bed-plan.csv
+/home/hatch/workspace/restic-lab/data/field-notes/photos
+/home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-01-copy.bin
+/home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-01.bin
+/home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-02.bin
+[exit 0]
+$ restic diff c81c812b9ea6e67346d159e70f199048222b395e05f8dacc8e22c377e31dfb7a 997db8dc16b46ac61f384adccc9de624e6f6c1b7dd5c61bd487d502e64dfb1d2
+comparing snapshot c81c812b to 997db8dc:
+
+M    /home/hatch/workspace/restic-lab/data/field-notes/documents/garden-diary.txt
++    /home/hatch/workspace/restic-lab/data/field-notes/documents/shed-key.txt
++    /home/hatch/workspace/restic-lab/data/field-notes/photos/orchard-01-copy.bin
+
+Files:           2 new,     0 removed,     1 changed
+Dirs:            0 new,     0 removed
+Others:          0 new,     0 removed
+Data Blobs:      2 new,     1 removed
+Tree Blobs:      9 new,     9 removed
+  Added:   7.089 KiB
+  Removed: 5.692 KiB
+[exit 0]
+$ restic find shed-key.txt
+Found matching entries in snapshot 997db8dc from 2026-10-24 04:07:58
+/home/hatch/workspace/restic-lab/data/field-notes/documents/shed-key.txt
+[exit 0]

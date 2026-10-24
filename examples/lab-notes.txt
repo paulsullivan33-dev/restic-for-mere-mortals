@@ -1,0 +1,49 @@
+Lab notes — Restic for Mere Mortals
+Built 2026-10-24 (lab clock) against restic 0.18.1,
+official Linux amd64 binary, on Ubuntu 24.04.
+
+Setup
+- Binary downloaded from the project's GitHub release
+  and run in place; nothing installed system-wide.
+- RESTIC_REPOSITORY pointed at a folder beside the data
+  (a lab convenience; chapter 4 says why real setups
+  must not do this).
+- Password supplied by environment variable. The lab
+  password is invented and worthless; it appears in no
+  transcript.
+
+Sample data (all invented)
+- field-notes/documents/garden-diary.txt — appended
+  between snapshots 1 and 2.
+- field-notes/documents/shopping-list.txt — untouched.
+- field-notes/documents/shed-key.txt — added for
+  snapshot 2; also the `find` target.
+- field-notes/exports/bed-plan.csv — untouched.
+- field-notes/photos/orchard-01.bin — 8 MiB random,
+  copied to orchard-01-copy.bin for snapshot 2.
+- field-notes/photos/orchard-02.bin — 4 MiB random.
+- SHA-256 sums of the originals were recorded before
+  the first backup (checksums-before.txt in the lab
+  folder) and compared after the restore.
+
+Headline measurements
+- Snapshot 1: 12 MiB data; repository 12,590,776 bytes.
+- Snapshot 2: 20 MiB data tree; backup added 7.089 KiB;
+  repository 12,595,923 bytes (growth 5,147 bytes).
+- Forget of snapshot 1 + prune: 9 blobs, 2.978 KiB
+  removed; repository 12,591,525 bytes.
+- check and check --read-data: no errors were found.
+
+Wrinkles worth the chapters they got
+- Restore exited 1 in this sandbox: one lchown
+  "operation not permitted" per file, contents byte-
+  identical (diff -r exit 0, checksums matched).
+- A wrong password ends every command identically:
+  "Fatal: wrong password or no key found" (exit 12).
+- Random binary data does not compress (stats ratio
+  1.00x); deduplication, not compression, did the work.
+
+Not run (documented only, labelled in the chapters)
+- SFTP, REST server and object-storage backends.
+- restic mount; restic copy; restic migrate;
+  the repair commands; self-update.

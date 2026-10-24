@@ -1,0 +1,33 @@
+# The commands of the guide, in order.
+# Passwords are never on a command line here:
+# they come from the environment (chapter 4).
+
+restic version                                   # ch. 3
+export RESTIC_REPOSITORY=/path/to/repo           # ch. 4
+export RESTIC_PASSWORD_FILE=$HOME/.restic-password
+restic init                                      # ch. 4
+restic cat config                                # ch. 4
+
+restic backup /path/to/what/matters              # ch. 5
+restic backup --exclude-file excludes.txt \
+  --tag nightly /path/to/what/matters            # ch. 5
+
+restic snapshots                                 # ch. 7
+restic ls latest                                 # ch. 7
+restic diff <older-id> <newer-id>                # ch. 7
+restic find shed-key.txt                         # ch. 7
+restic stats --mode raw-data                     # ch. 7
+
+restic restore latest --target /path/to/check    # ch. 8
+diff -r /path/to/original /path/to/check         # ch. 8
+
+restic forget --keep-daily 7 --keep-weekly 4 \
+  --keep-monthly 6 --dry-run                     # ch. 9
+restic forget --keep-daily 7 --keep-weekly 4 \
+  --keep-monthly 6                               # ch. 9
+restic prune                                     # ch. 9
+
+restic check                                     # ch. 10
+restic check --read-data                         # ch. 10
+restic key list                                  # ch. 10
+restic unlock                                    # ch. 15, only after checking nobody is running

@@ -1,0 +1,28 @@
+site_name: Restic for Mere Mortals
+site_description: Plain-language backups that are encrypted, deduplicated and checkable. Creating a repository and guarding its password, taking snapshots, proving deduplication with measured numbers, restoring and verifying files, forgetting old snapshots and pruning what they leave behind, and knowing exactly what a lost password costs.
+site_url: https://paulsullivan33-dev.github.io/restic-for-mere-mortals/
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Restic Is: what-restic-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Restic: installing-restic.md
+  - Your First Repository: your-first-repository.md
+  - Backing Up: backing-up.md
+  - Snapshots and Deduplication: deduplication.md
+  - Looking Inside: looking-inside.md
+  - Restoring: restoring.md
+  - Forgetting and Pruning: forgetting-and-pruning.md
+  - Checking and Repair: checking-and-repair.md
+  - Backends in Brief: backends-in-brief.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md
