@@ -1,6 +1,7 @@
 site_name: Restic for Mere Mortals
 site_description: Plain-language backups that are encrypted, deduplicated and checkable. Creating a repository and guarding its password, taking snapshots, proving deduplication with measured numbers, restoring and verifying files, forgetting old snapshots and pruning what they leave behind, and knowing exactly what a lost password costs.
 site_url: https://paulsullivan33-dev.github.io/restic-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
 
 # Guides live at the repo root (nice for GitHub browsing).
 # The deploy workflow copies them into docs/ before building.
